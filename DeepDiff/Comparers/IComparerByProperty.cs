@@ -4,6 +4,6 @@ namespace DeepDiff.Comparers
 {
     internal interface IComparerByProperty : IEqualityComparer
     {
-        CompareByPropertyResult Compare(object? left, object? right);
+        CompareByPropertyResult Compare(object left, object right);
     }
 }

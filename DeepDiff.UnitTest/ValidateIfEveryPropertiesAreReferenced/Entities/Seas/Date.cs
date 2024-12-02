@@ -85,19 +85,15 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Seas
         }
 
         public int CompareTo(object? obj)
-        {
-            switch (obj)
+            => obj switch
             {
-                case null: return 1;
-                case Date d: return CompareTo(d);
-                default: throw new ArgumentException($"{obj} is not a {nameof(Date)}, cannot compare.");
-            }
-        }
+                null => 1,
+                Date d => CompareTo(d),
+                _ => throw new ArgumentException($"{obj} is not a {nameof(Date)}, cannot compare."),
+            };
 
         public int CompareTo(Date other)
-        {
-            return DayCountSinceBaseDate.CompareTo(other.DayCountSinceBaseDate);
-        }
+            => DayCountSinceBaseDate.CompareTo(other.DayCountSinceBaseDate);
 
         #endregion
 
@@ -107,20 +103,18 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Seas
             if (s.Length != 10
                 || s[2] != '/' || s[5] != '/')
                 throw new FormatException("Input string was not in correct format");
-            int day = int.Parse(s.Substring(0, 2));
+            int day = int.Parse(s[..2]);
             int month = int.Parse(s.Substring(3, 2));
-            int year = int.Parse(s.Substring(6));
+            int year = int.Parse(s[6..]);
             return new Date(year, month, day);
         }
 
         public override string ToString()
-        {
-            return LocalDateTime.ToString("dd'/'MM'/'yyyy");
-        }
+            => LocalDateTime.ToString("dd'/'MM'/'yyyy");
 
-        public static Date Today => new Date(DateTime.Today);
-        public static Date MinValue => new Date(0);
-        public static Date MaxValue => new Date(9999, 1, 1);
+        public static Date Today => new(DateTime.Today);
+        public static Date MinValue => new(0);
+        public static Date MaxValue => new(9999, 1, 1);
 
         private const long BaseDateTimeTicks = 621355968000000000; // new DateTime(1970, 01, 01).Ticks
     }

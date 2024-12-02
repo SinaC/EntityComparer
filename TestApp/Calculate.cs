@@ -21,7 +21,7 @@ public class Calculate : ICalculate
         Logger.Information($"Start calculation for {deliveryDate}");
 
         var existing = Generate(deliveryDate, ActivationControlStatus.Validated, "INTERNAL", "TSO");
-        var calculated = Generate(deliveryDate, ActivationControlStatus.Calculated, null, null);
+        var calculated = Generate(deliveryDate, ActivationControlStatus.Calculated, null!, null!);
         calculated.TotalEnergyToBeSupplied = 5m;
         calculated.ActivationControlDetails[5].DpDetails[2].TimestampDetails[7].EnergySupplied = -7m;
 

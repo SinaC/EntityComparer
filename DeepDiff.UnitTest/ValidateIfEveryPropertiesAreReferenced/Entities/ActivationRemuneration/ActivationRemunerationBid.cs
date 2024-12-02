@@ -14,10 +14,10 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public DateTime StartsOn { get; set; }
         public Direction Direction { get; set; }
         // PK
-        public string BidGroupId { get; set; }
+        public string BidGroupId { get; set; } = null!;
 
-        public string DeliveryPointEan { get; set; }
-        public string DeliveryPointName { get; set; }
+        public string DeliveryPointEan { get; set; } = null!;
+        public string DeliveryPointName { get; set; } = null!;
 
         public decimal EnergyRequested { get; set; }
         public decimal EnergyRequestedForRedispatching { get; set; }
@@ -26,10 +26,10 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public decimal Remuneration { get; set; }
 
         // one-to-many
-        public List<ActivationRemunerationBidDetail> ActivationRemunerationBidDetails { get; set; }
+        public List<ActivationRemunerationBidDetail> ActivationRemunerationBidDetails { get; set; } = null!;
 
         // FK to ActivationRemunerationDirectionDetail
-        public ActivationRemunerationDirectionDetail ActivationRemunerationDirectionDetail { get; set; }
+        public ActivationRemunerationDirectionDetail ActivationRemunerationDirectionDetail { get; set; } = null!;
 
         //
         public decimal TotalEnergyRequested => EnergyRequested + EnergyRequestedForRedispatching;

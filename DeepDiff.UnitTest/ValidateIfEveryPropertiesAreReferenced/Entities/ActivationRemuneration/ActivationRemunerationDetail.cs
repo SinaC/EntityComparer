@@ -22,19 +22,19 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public bool IsEnergyRequestedRatioIncoherent { get; set; }
 
         public ActivationRemunerationStatus Status { get; set; }
-        public string InternalComment { get; set; }
-        public string TsoComment { get; set; }
+        public string InternalComment { get; set; } = null!;
+        public string TsoComment { get; set; } = null!;
         public SupplierStatus SupplierStatus { get; set; }
-        public string SupplierComment { get; set; }
+        public string SupplierComment { get; set; } = null!;
 
         // one-to-many
-        public List<ActivationRemunerationDirectionDetail> ActivationRemunerationDirectionDetails { get; set; } // one by direction
+        public List<ActivationRemunerationDirectionDetail> ActivationRemunerationDirectionDetails { get; set; } = null!; // one by direction
 
         // FK to ActivationRemuneration
-        public ActivationRemuneration ActivationRemuneration { get; set; }
+        public ActivationRemuneration ActivationRemuneration { get; set; } = null!;
 
         // technical fields
-        public string AuditedBy { get; set; }
+        public string AuditedBy { get; set; } = null!;
         public DateTime AuditedOn { get; set; }
 
         //

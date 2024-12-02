@@ -11,7 +11,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         // PK from ActivationControlDpDetail
         public int ActivationControlId { get; set; }
         public DateTime StartsOn { get; set; }
-        public string DeliveryPointEan { get; set; }
+        public string DeliveryPointEan { get; set; } = null!;
         // PK
         public DateTime Timestamp { get; set; }
 
@@ -25,7 +25,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public QualityFactorSources QualityFactorInvalid { get; set; }
 
         // FK to ActivationControlDpDetail
-        public ActivationControlDpDetail ActivationControlDpDetail { get; set; }
+        public ActivationControlDpDetail ActivationControlDpDetail { get; set; } = null!;
 
         // calculated property, not saved in db
         public QualityFactor QualityFactor

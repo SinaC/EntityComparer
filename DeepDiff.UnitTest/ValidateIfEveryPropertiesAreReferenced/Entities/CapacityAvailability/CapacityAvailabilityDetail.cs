@@ -17,11 +17,11 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Capa
         public bool ToBeRecomputed { get; set; }
 
         // one-to-many
-        public List<CapacityAvailabilityCctu> CapacityAvailabilityCctus { get; set; }
+        public List<CapacityAvailabilityCctu> CapacityAvailabilityCctus { get; set; } = null!;
 
         // FK to CapacityAvailability
         public Guid CapacityAvailabilityId { get; set; }
-        public CapacityAvailability CapacityAvailability { get; set; }
+        public CapacityAvailability CapacityAvailability { get; set; } = null!;
 
         private string DebuggerDisplay => $"{Direction} #CCTU:{CctuNonCompliant} #CCTU-:{CctuNonCompliantInPreviousDays} WCP:{WeightedCapacityPrice} TBR?:{ToBeRecomputed} {Id}";
     }

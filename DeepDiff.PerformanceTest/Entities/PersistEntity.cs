@@ -1,11 +1,11 @@
 namespace DeepDiff.PerformanceTest.Entities.Simple;
 
-public abstract class PersistEntity
+internal abstract class PersistEntity
 {
     public PersistChange PersistChange { get; set; }
 }
 
-public enum PersistChange
+internal enum PersistChange
 {
     None,
     Insert,

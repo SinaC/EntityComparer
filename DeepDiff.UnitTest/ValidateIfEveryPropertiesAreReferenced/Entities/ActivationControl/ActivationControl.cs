@@ -9,7 +9,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
     [DebuggerDisplay("{DebuggerDisplay, nq}")]
     public class ActivationControl : UpdateAuditEntity<int, string, DateTime, string, DateTime?>
     {
-        public string ContractReference { get; set; }
+        public string ContractReference { get; set; } = null!;
         public Date Day { get; set; }
 
         public decimal TotalEnergyRequested { get; set; }
@@ -22,17 +22,17 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public int DeactivationModeExcludedCount { get; set; }
 
         public ActivationControlStatus Status { get; set; }
-        public string InternalComment { get; set; }
-        public string TsoComment { get; set; }
+        public string InternalComment { get; set; } = null!;
+        public string TsoComment { get; set; } = null!;
         public SupplierStatus SupplierStatus { get; set; }
-        public string SupplierComment { get; set; }
+        public string SupplierComment { get; set; } = null!;
 
         public QualityFactorSources QualityFactorMissing { get; set; }
         public QualityFactorSources QualityFactorInvalid { get; set; }
 
         // one-to-many
-        public List<ActivationControlDetail> ActivationControlDetails { get; set; }
-        public List<ActivationControlDeactivationModePeriod> DeactivationModePeriods { get; set; }
+        public List<ActivationControlDetail> ActivationControlDetails { get; set; } = null!;
+        public List<ActivationControlDeactivationModePeriod> DeactivationModePeriods { get; set; } = null!;
 
         // calculated property, not saved in db
         public QualityFactor QualityFactor

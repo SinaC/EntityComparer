@@ -9,11 +9,11 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
     [DebuggerDisplay("{DebuggerDisplay, nq}")]
     public class ActivationRemuneration : CreateAuditEntity<int, string, DateTime>
     {
-        public string ContractReference { get; set; }
+        public string ContractReference { get; set; } = null!;
         public Date Day { get; set; }
 
         // one-to-many
-        public List<ActivationRemunerationDetail> ActivationRemunerationDetails { get; set; }
+        public List<ActivationRemunerationDetail> ActivationRemunerationDetails { get; set; } = null!;
 
         private string DebuggerDisplay => $"{ContractReference} {Day} {Id}";
     }

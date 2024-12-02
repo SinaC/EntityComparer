@@ -2,9 +2,9 @@
 {
     public abstract class CreateAuditEntity<TId, TCreatedBy, TCreatedOn> : IdEntity<TId>, ICreateAuditEntity<TCreatedBy, TCreatedOn>
     {
-        public virtual TCreatedBy CreatedBy { get; set; }
+        public virtual TCreatedBy CreatedBy { get; set; } = default!;
 
-        public virtual TCreatedOn CreatedOn { get; set; }
+        public virtual TCreatedOn CreatedOn { get; set; } = default!;
 
         public CreateAuditEntity()
             : this(PersistChange.None)

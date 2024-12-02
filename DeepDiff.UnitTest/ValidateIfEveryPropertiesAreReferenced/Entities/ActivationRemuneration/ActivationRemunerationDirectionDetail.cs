@@ -25,13 +25,13 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public int QualityCheck { get; set; }
 
         // one-to-many
-        public List<ActivationRemunerationBid> ActivationRemunerationBids { get; set; }
+        public List<ActivationRemunerationBid> ActivationRemunerationBids { get; set; } = null!;
 
         // FK to ActivationRemunerationDetail
-        public ActivationRemunerationDetail ActivationRemunerationDetail { get; set; }
+        public ActivationRemunerationDetail ActivationRemunerationDetail { get; set; } = null!;
 
         // technical fields
-        public string AuditedBy { get; set; }
+        public string AuditedBy { get; set; } = null!;
         public DateTime AuditedOn { get; set; }
 
         //

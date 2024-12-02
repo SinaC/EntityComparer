@@ -24,8 +24,4 @@
     <ProjectReference Include="..\DeepDiff\DeepDiff.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ValidateIfEveryPropertiesAreReferenced\Entities\ActivationRemuneration\" />
-  </ItemGroup>
-
 </Project>

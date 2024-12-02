@@ -4,7 +4,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Arc4
 {
     public abstract class IdEntity<TId> : PersistEntity, IIdEntity<TId>, IEquatable<IdEntity<TId>>
     {
-        public virtual TId Id { get; set; }
+        public virtual TId Id { get; set; } = default!;
 
         public IdEntity()
             : this(PersistChange.None)
@@ -26,15 +26,15 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Arc4
         {
             if (!Equals(Id, default(TId)))
             {
-                return Id.GetHashCode();
+                return Id!.GetHashCode();
             }
 
             return 0;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (!(obj is IdEntity<TId>))
+            if (obj is not IdEntity<TId>)
             {
                 return false;
             }
@@ -42,7 +42,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Arc4
             return Equals((IdEntity<TId>)obj);
         }
 
-        public bool Equals(IdEntity<TId> other)
+        public bool Equals(IdEntity<TId>? other)
         {
             if (this != other)
             {

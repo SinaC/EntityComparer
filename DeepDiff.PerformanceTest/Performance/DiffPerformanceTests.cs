@@ -22,15 +22,15 @@ public class DiffPerformanceTests
     [Fact]
     public void Merge()
     {
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
-        var entities = GenerateEntities(500);
+        var (existingEntities, newEntities) = GenerateEntities(500);
         sw.Stop();
         Output.WriteLine("Generation: {0} ms", sw.ElapsedMilliseconds);
 
         var deepDiff = CreateDeepDiff();
         sw.Restart();
-        var diff = deepDiff.MergeMany(entities.existingEntities, entities.newEntities);
+        var diff = deepDiff.MergeMany(existingEntities, newEntities);
         var results = diff.Entities.ToArray();
         sw.Stop();
 
@@ -40,15 +40,15 @@ public class DiffPerformanceTests
     [Fact]
     public void Merge_NoHashtable()
     {
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
-        var entities = GenerateEntities(500);
+        var (existingEntities, newEntities) = GenerateEntities(500);
         sw.Stop();
         Output.WriteLine("Generation: {0} ms", sw.ElapsedMilliseconds);
 
         var deepDiff = CreateDeepDiff();
         sw.Restart();
-        var diff = deepDiff.MergeMany(entities.existingEntities, entities.newEntities, cfg => cfg.UseHashtable(false));
+        var diff = deepDiff.MergeMany(existingEntities, newEntities, cfg => cfg.UseHashtable(false));
         var results = diff.Entities.ToArray();
         sw.Stop();
 
@@ -58,15 +58,15 @@ public class DiffPerformanceTests
     [Fact]
     public void Merge_NaiveComparer()
     {
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
-        var entities = GenerateEntities(500);
+        var (existingEntities, newEntities) = GenerateEntities(500);
         sw.Stop();
         Output.WriteLine("Generation: {0} ms", sw.ElapsedMilliseconds);
 
         var deepDiff = CreateDeepDiff();
         sw.Restart();
-        var diff = deepDiff.MergeMany(entities.existingEntities, entities.newEntities, cfg => cfg.UsePrecompiledEqualityComparer(false));
+        var diff = deepDiff.MergeMany(existingEntities, newEntities, cfg => cfg.UsePrecompiledEqualityComparer(false));
         var results = diff.Entities.ToArray();
         sw.Stop();
 
@@ -76,15 +76,15 @@ public class DiffPerformanceTests
     [Fact]
     public void Merge_NoHashtable_NaiveComparer()
     {
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
-        var entities = GenerateEntities(500);
+        var (existingEntities, newEntities) = GenerateEntities(500);
         sw.Stop();
         Output.WriteLine("Generation: {0} ms", sw.ElapsedMilliseconds);
 
         var deepDiff = CreateDeepDiff();
         sw.Restart();
-        var diff = deepDiff.MergeMany(entities.existingEntities, entities.newEntities, cfg => cfg.UseHashtable(false).UsePrecompiledEqualityComparer(false));
+        var diff = deepDiff.MergeMany(existingEntities, newEntities, cfg => cfg.UseHashtable(false).UsePrecompiledEqualityComparer(false));
         var results = diff.Entities.ToArray();
         sw.Stop();
 
@@ -131,7 +131,7 @@ public class DiffPerformanceTests
                 {
                     var entity2 = entity1.SubEntities[entity2Index];
                     if (entity2Index % 5 == 0)
-                        entity2.DeliveryPointEan = entity2.DeliveryPointEan + "_MOD";
+                        entity2.DeliveryPointEan += "_MOD";
                 }
             }
         }

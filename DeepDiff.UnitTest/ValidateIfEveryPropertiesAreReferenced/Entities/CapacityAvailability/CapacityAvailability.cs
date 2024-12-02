@@ -7,14 +7,14 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Capa
     [DebuggerDisplay("{DebuggerDisplay, nq}")]
     public class CapacityAvailability : CreateAuditEntity
     {
-        public string ContractReference { get; set; }
+        public string ContractReference { get; set; } = null!;
         public Date Day { get; set; }
 
         // one-to-many
-        public List<CapacityAvailabilityDetail> CapacityAvailabilityDetails { get; set; }
+        public List<CapacityAvailabilityDetail> CapacityAvailabilityDetails { get; set; } = null!;
 
         // one-to-zero/one
-        public ForcedOutagePeriod ForcedOutagePeriod { get; set; }
+        public ForcedOutagePeriod ForcedOutagePeriod { get; set; } = null!;
 
         private string DebuggerDisplay => $"{ContractReference} {Day} {Id}";
     }

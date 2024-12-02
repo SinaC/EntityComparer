@@ -3,7 +3,7 @@ using DeepDiff.PerformanceTest.Entities.Simple;
 
 namespace DeepDiff.PerformanceTest.Entities;
 
-public static class IDiffConfigurationExtensions
+internal static class IDiffConfigurationExtensions
 {
     public static IEntityConfiguration<TEntity> PersistEntity<TEntity>(this IDeepDiffConfiguration diffConfiguration)
         where TEntity : PersistEntity

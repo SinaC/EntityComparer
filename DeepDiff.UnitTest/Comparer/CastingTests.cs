@@ -20,7 +20,11 @@ namespace DeepDiff.UnitTest.Comparer
             if (equalityComparerType.IsAssignableFrom(equalityComparer.GetType()))
             {
                 var equalMethod = equalityComparerType.GetMethod(nameof(Equals), new[] { typeof(decimal), typeof(decimal) });
+#pragma warning disable CS8605 // Unboxing a possibly null value.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 var result = (bool)equalMethod.Invoke(equalityComparer, new object[] { d1, d2 });
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8605 // Unboxing a possibly null value.
             }
         }
     }

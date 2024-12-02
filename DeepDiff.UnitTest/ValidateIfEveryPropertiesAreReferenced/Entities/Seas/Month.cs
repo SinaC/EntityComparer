@@ -90,7 +90,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Seas
             MonthPart = month;
         }
 
-        public Date FirstDay => new Date(YearPart, MonthPart, 1);
+        public Date FirstDay => new(YearPart, MonthPart, 1);
 
         public Date LastDay
         {
@@ -149,40 +149,28 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Seas
         #region IEquatable<Month>, IComparable, IComparable<Month>
 
         public bool Equals(Month other)
-        {
-            return YearPart == other.YearPart && MonthPart == other.MonthPart;
-        }
+            => YearPart == other.YearPart && MonthPart == other.MonthPart;
 
-        public override bool Equals(object obj)
-        {
-            return obj is Month month && Equals(month);
-        }
+        public override bool Equals(object? obj)
+            => obj is Month month && Equals(month);
 
         public override int GetHashCode() // this will represent a unique representation of a month
-        {
-            return (YearPart << 4) + MonthPart;
-        }
+            => (YearPart << 4) + MonthPart;
 
-        public int CompareTo(object obj)
-        {
-            switch (obj)
+        public int CompareTo(object? obj)
+            => obj switch
             {
-                case null: return 1;
-                case Month d: return CompareTo(d);
-                default: throw new ArgumentException($"{obj} is not a {nameof(Month)}, cannot compare.");
-            }
-        }
+                null => 1,
+                Month d => CompareTo(d),
+                _ => throw new ArgumentException($"{obj} is not a {nameof(Month)}, cannot compare."),
+            };
 
         public int CompareTo(Month other)
-        {
-            return GetHashCode().CompareTo(other.GetHashCode());
-        }
+            => GetHashCode().CompareTo(other.GetHashCode());
 
         #endregion
 
         public override string ToString()
-        {
-            return $"{MonthPart:D2}/{YearPart:D4}";
-        }
+            => $"{MonthPart:D2}/{YearPart:D4}";
     }
 }

@@ -45,9 +45,10 @@ namespace DeepDiff
             bool areKeysEqual = true;
             if (!entityConfiguration.NoKey && entityConfiguration.KeyConfiguration.KeyProperties != null)
             {
-                areKeysEqual = DiffEngineConfiguration.UsePrecompiledEqualityComparer && entityConfiguration.KeyConfiguration.UsePrecompiledEqualityComparer
-                    ? entityConfiguration.KeyConfiguration.PrecompiledEqualityComparer.Equals(existingEntity, newEntity)
-                    : entityConfiguration.KeyConfiguration.NaiveEqualityComparer.Equals(existingEntity, newEntity);
+                var equalityComparer = DiffEngineConfiguration.UsePrecompiledEqualityComparer && entityConfiguration.KeyConfiguration.UsePrecompiledEqualityComparer
+                    ? entityConfiguration.KeyConfiguration.PrecompiledEqualityComparer
+                    : entityConfiguration.KeyConfiguration.NaiveEqualityComparer;
+                areKeysEqual = equalityComparer.Equals(existingEntity, newEntity);
                 if (!areKeysEqual && !DiffEngineConfiguration.GenerateOperationsOnly) // keys are different -> copy keys
                     entityConfiguration.KeyConfiguration.KeyProperties.CopyPropertyValues(existingEntity, newEntity);
             }
@@ -112,14 +113,10 @@ namespace DeepDiff
             }
 
             // we are sure there is at least one existing and one new entity
-            var existingEntitiesHashtable = CheckIfHashtablesShouldBeUsed(existingEntities)
-                ? InitializeHashtable(entityConfiguration, entityConfiguration.KeyConfiguration, existingEntities)
-                : null;
+            // search if every existing entity is found in new entities -> this will detect update and delete
             var newEntitiesHashtable = CheckIfHashtablesShouldBeUsed(newEntities)
                 ? InitializeHashtable(entityConfiguration, entityConfiguration.KeyConfiguration, newEntities)
                 : null;
-
-            // search if every existing entity is found in new entities -> this will detect update and delete
             foreach (var existingEntity in existingEntities)
             {
                 var newEntity = newEntitiesHashtable != null
@@ -160,6 +157,9 @@ namespace DeepDiff
             }
 
             // search if every new entity is found in existing entities -> this will detect insert
+            var existingEntitiesHashtable = CheckIfHashtablesShouldBeUsed(existingEntities)
+                ? InitializeHashtable(entityConfiguration, entityConfiguration.KeyConfiguration, existingEntities)
+                : null;
             foreach (var newEntity in newEntities)
             {
                 var newEntityFoundInExistingEntities = existingEntitiesHashtable != null
@@ -181,12 +181,12 @@ namespace DeepDiff
 
         private object SearchMatchingEntityByKey(EntityConfiguration entityConfiguration, KeyConfiguration keyConfiguration, IEnumerable<object> entities, object existingEntity)
         {
-            var comparer = DiffEngineConfiguration.UsePrecompiledEqualityComparer && keyConfiguration.UsePrecompiledEqualityComparer
-                    ? keyConfiguration.PrecompiledEqualityComparer
-                    : keyConfiguration.NaiveEqualityComparer;
+            var equalityComparer = DiffEngineConfiguration.UsePrecompiledEqualityComparer && keyConfiguration.UsePrecompiledEqualityComparer
+                ? keyConfiguration.PrecompiledEqualityComparer
+                : keyConfiguration.NaiveEqualityComparer;
             try
             {
-                return entities.SingleOrDefault(x => comparer.Equals(x, existingEntity));
+                return entities.SingleOrDefault(x => equalityComparer.Equals(x, existingEntity));
             }
             catch(InvalidOperationException)
             {

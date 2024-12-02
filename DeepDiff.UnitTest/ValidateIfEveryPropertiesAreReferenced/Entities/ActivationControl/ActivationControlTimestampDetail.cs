@@ -31,10 +31,10 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public bool IsDeactivationModeExcluded { get; set; }
 
         // FK to ActivationControlDetail
-        public ActivationControlDetail ActivationControlDetail { get; set; }
+        public ActivationControlDetail ActivationControlDetail { get; set; } = null!;
 
         // technical fields
-        public string AuditedBy { get; set; }
+        public string AuditedBy { get; set; } = null!;
         public DateTime AuditedOn { get; set; }
 
         //

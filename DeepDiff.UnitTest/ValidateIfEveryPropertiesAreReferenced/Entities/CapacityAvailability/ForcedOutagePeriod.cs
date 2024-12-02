@@ -14,7 +14,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Capa
 
         // FK to CapacityAvailability
         public Guid CapacityAvailabilityId { get; set; }
-        public CapacityAvailability CapacityAvailability { get; set; }
+        public CapacityAvailability CapacityAvailability { get; set; } = null!;
 
         private string DebuggerDisplay => $"P1:{FirstPeriodStart}->{FirstPeriodEnd} PS:{SecondPeriodStart}->{SecondPeriodEnd} {Id}";
     }

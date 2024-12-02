@@ -18,7 +18,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Capa
                 _endsOn = null;
             }
         }
-        public string CctuName { get; set; }
+        public string CctuName { get; set; } = null!;
 
         public decimal AwardedVolume { get; set; }
         public decimal ReservationPrice { get; set; }
@@ -31,17 +31,17 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Capa
         public decimal Penalty { get; set; }
 
         public CapacityAvailabilityStatus Status { get; set; }
-        public string InternalComment { get; set; }
-        public string TsoComment { get; set; }
+        public string InternalComment { get; set; } = null!;
+        public string TsoComment { get; set; } = null!;
         public SupplierStatus SupplierStatus { get; set; }
-        public string SupplierComment { get; set; }
+        public string SupplierComment { get; set; } = null!;
 
         // one-to-many
-        public List<CapacityAvailabilityCctuDetail> CapacityAvailabilityCctuDetails { get; set; }
+        public List<CapacityAvailabilityCctuDetail> CapacityAvailabilityCctuDetails { get; set; } = null!;
 
         // FK
         public Guid CapacityAvailabilityDetailId { get; set; }
-        public CapacityAvailabilityDetail CapacityAvailabilityDetail { get; set; }
+        public CapacityAvailabilityDetail CapacityAvailabilityDetail { get; set; } = null!;
 
         public int HourCount() => (int)(EndsOn - StartsOn).TotalHours;
 

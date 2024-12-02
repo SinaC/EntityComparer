@@ -2,9 +2,9 @@
 {
     public abstract class AuditEntity<TId, TAuditedBy, TAuditedOn> : IdEntity<TId>
     {
-        public virtual TAuditedBy AuditedBy { get; set; }
+        public virtual TAuditedBy AuditedBy { get; set; } = default!;
 
-        public virtual TAuditedOn AuditedOn { get; set; }
+        public virtual TAuditedOn AuditedOn { get; set; } = default!;
 
         public override PersistChange PersistChange { get; set; }
 

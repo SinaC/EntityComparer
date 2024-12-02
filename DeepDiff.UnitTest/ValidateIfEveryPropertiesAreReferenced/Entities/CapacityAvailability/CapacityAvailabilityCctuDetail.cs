@@ -20,7 +20,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Capa
 
         // FK
         public Guid CapacityAvailabilityCctuId { get; set; }
-        public CapacityAvailabilityCctu CapacityAvailabilityCctu { get; set; }
+        public CapacityAvailabilityCctu CapacityAvailabilityCctu { get; set; } = null!;
 
         private string DebuggerDisplay => $"{StartsOn} AV:{AwardedVolume} EV:{ExchangedVolume} OV:{ObligationVolume} NV:{NominatedVolume} MV:{MissingVolume} FOS:{ForcedOutageStatus} FOPS:{ForcedOutagePeriodStatus} {Id}";
     }

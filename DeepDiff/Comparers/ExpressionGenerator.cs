@@ -51,7 +51,7 @@ namespace DeepDiff.Comparers
                 equals.Add(equalityExpression);
             }
             Expression ands = equals.Aggregate((left, right) => Expression.AndAlso(left, right));
-            EqualsFunc<T>? andEquals = Expression.Lambda<EqualsFunc<T>>(ands, left, right).Compile();
+            EqualsFunc<T> andEquals = Expression.Lambda<EqualsFunc<T>>(ands, left, right).Compile();
             return andEquals;
         }
 
@@ -123,7 +123,7 @@ namespace DeepDiff.Comparers
             // var hash = new HashCode();
             // hash.Add(this.Price);
             // hash.Add(this.When);
-            // AddHasCodeMembersForCollection(hash, this.Hobbies) where this.Hobbies has DeepCompare attribute.
+            // AddHashCodeMembersForCollection(hash, this.Hobbies) where this.Hobbies has DeepCompare attribute.
             // return hash.ToHashCode();
             ParameterExpression obj = Expression.Parameter(typeof(T), "obj");
             ParameterExpression hashCode = Expression.Variable(typeof(HashCode), "hashCode");

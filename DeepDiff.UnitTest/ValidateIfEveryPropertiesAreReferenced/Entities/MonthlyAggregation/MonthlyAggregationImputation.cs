@@ -9,6 +9,6 @@
         public decimal? EnergyDiscrepancy { get; set; }
 
         // navigation to MonthlyAggregationDetail
-        public MonthlyAggregationDetail<MonthlyAggregationImputation> MonthlyAggregationDetail { get; set; }
+        public MonthlyAggregationDetail<MonthlyAggregationImputation> MonthlyAggregationDetail { get; set; } = null!;
     }
 }

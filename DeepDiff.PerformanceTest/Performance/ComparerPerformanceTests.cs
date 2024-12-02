@@ -22,7 +22,7 @@ public class ComparerPerformanceTests
     [Fact]
     public void NaiveEqualityComparerByProperty_1Field()
     {
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
         var existingEntities = Enumerable.Range(0, 10000).Select(x => new EntityLevel1
         {
@@ -54,7 +54,7 @@ public class ComparerPerformanceTests
     [Fact]
     public void PrecompiledEqualityComparerByProperty_1Field()
     {
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
         var existingEntities = Enumerable.Range(0, 10000).Select(x => new EntityLevel1
         {
@@ -86,7 +86,7 @@ public class ComparerPerformanceTests
     [Fact]
     public void NaiveEqualityComparerByProperty_4Fields()
     {
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
         var existingEntities = Enumerable.Range(0, 10000).Select(x => new EntityLevel1
         {
@@ -124,7 +124,7 @@ public class ComparerPerformanceTests
     [Fact]
     public void PrecompiledEqualityComparerByProperty_4Fields()
     {
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
         var existingEntities = Enumerable.Range(0, 10000).Select(x => new EntityLevel1
         {
@@ -168,7 +168,7 @@ public class ComparerPerformanceTests
                 { typeof(decimal), new DecimalComparer(6) }
             };
 
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
         var existingEntities = Enumerable.Range(0, 10000).Select(x => new EntityLevel1
         {
@@ -212,7 +212,7 @@ public class ComparerPerformanceTests
                 { typeof(decimal), new DecimalComparer(6) }
             };
 
-        Stopwatch sw = new Stopwatch();
+        var sw = new Stopwatch();
         sw.Start();
         var existingEntities = Enumerable.Range(0, 10000).Select(x => new EntityLevel1
         {

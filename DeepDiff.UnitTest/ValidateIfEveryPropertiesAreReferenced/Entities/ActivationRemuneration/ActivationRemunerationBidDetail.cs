@@ -12,7 +12,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public int ActivationRemunerationId { get; set; }
         public DateTime StartsOn { get; set; }
         public Direction Direction { get; set; }
-        public string BidGroupId { get; set; }
+        public string BidGroupId { get; set; } = null!;
         // PK
         public DateTime Timestamp { get; set; }
 
@@ -25,7 +25,7 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public decimal Remuneration { get; set; }
 
         // FK to ActivationRemunerationBid
-        public ActivationRemunerationBid ActivationRemunerationBid { get; set; }
+        public ActivationRemunerationBid ActivationRemunerationBid { get; set; } = null!;
 
         //
         public decimal TotalVolumeRequested => VolumeRequested + VolumeRequestedForRedispatching;

@@ -23,14 +23,14 @@ namespace DeepDiff.Comparers
             CompareFunc = ExpressionGenerator.GenerateCompareFunc<T>(properties, typeSpecificComparers, propertySpecificComparers);
         }
 
-        public new bool Equals(object? left, object? right)
+        public new bool Equals(object left, object right)
             => object.ReferenceEquals(left, right)
           || (left is T leftAsT && right is T rightAsT && this.EqualsFunc(leftAsT, rightAsT));
 
         public int GetHashCode(object obj)
             => obj is T objAsT ? this.HasherFunc(objAsT) : obj.GetHashCode();
 
-        public CompareByPropertyResult Compare(object? left, object? right)
+        public CompareByPropertyResult Compare(object left, object right)
         {
             if (object.ReferenceEquals(left, right)) // will handle left == right == null
                 return new CompareByPropertyResult(true);

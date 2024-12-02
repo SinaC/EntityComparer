@@ -13,18 +13,18 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public int ActivationControlId { get; set; }
         public DateTime StartsOn { get; set; }
         // PK
-        public string DeliveryPointEan { get; set; }
+        public string DeliveryPointEan { get; set; } = null!;
 
-        public string DeliveryPointName { get; set; }
+        public string DeliveryPointName { get; set; } = null!;
         public Direction Direction { get; set; }
         public DeliveryPointType DeliveryPointType { get; set; }
         public decimal TotalEnergySupplied { get; set; }
 
         // one-to-many
-        public List<ActivationControlDpTimestampDetail> TimestampDetails { get; set; }
+        public List<ActivationControlDpTimestampDetail> TimestampDetails { get; set; } = null!;
 
         // FK to ActivationControlDetail
-        public ActivationControlDetail ActivationControlDetail { get; set; }
+        public ActivationControlDetail ActivationControlDetail { get; set; } = null!;
 
         private string DebuggerDisplay => $"{DeliveryPointEan} {DeliveryPointName} DPT:{DeliveryPointType} TES:{TotalEnergySupplied} {ActivationControlId}-{StartsOn}";
     }

@@ -25,7 +25,7 @@ namespace DeepDiff.Comparers
             PropertySpecificComparers = propertySpecificComparers;
         }
 
-        public new bool Equals(object? left, object? right)
+        public new bool Equals(object left, object right)
         {
             if (object.ReferenceEquals(left, right)) // will handle left == right == null
                 return true;
@@ -79,7 +79,7 @@ namespace DeepDiff.Comparers
             return hashCode.ToHashCode();
         }
 
-        public CompareByPropertyResult Compare(object? left, object? right)
+        public CompareByPropertyResult Compare(object left, object right)
         {
             if (object.ReferenceEquals(left, right)) // will handle left == right == null
                 return new CompareByPropertyResult(true);

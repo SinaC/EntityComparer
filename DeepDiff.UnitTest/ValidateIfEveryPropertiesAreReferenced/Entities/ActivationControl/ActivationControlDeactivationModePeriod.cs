@@ -10,6 +10,6 @@ namespace DeepDiff.UnitTest.ValidateIfEveryPropertiesAreReferenced.Entities.Acti
         public DateTime PeriodStart { get; set; }
         public DateTime PeriodEnd { get; set; }
 
-        public ActivationControl ActivationControl { get; set; }
+        public ActivationControl ActivationControl { get; set; } = null!;
     }
 }
