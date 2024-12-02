@@ -1,4 +1,5 @@
 using DeepDiff.Exceptions;
+using DeepDiff.Internal.Configuration;
 using System;
 using System.Collections.Generic;
 

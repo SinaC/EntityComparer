@@ -1,5 +1,6 @@
 using DeepDiff.Exceptions;
-using DeepDiff.Validators;
+using DeepDiff.Internal.Configuration;
+using DeepDiff.Internal.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,7 @@ namespace DeepDiff.Configuration
             ValidateConfiguration();
             CreateComparers();
 
-            return new DeepDiff(this);
+            return new Internal.DeepDiff(this);
         }
 
         public void ValidateConfiguration()

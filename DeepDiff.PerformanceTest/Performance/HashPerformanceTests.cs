@@ -1,5 +1,6 @@
-﻿using DeepDiff.Comparers;
-using DeepDiff.Configuration;
+﻿using DeepDiff.Internal.Comparers;
+using DeepDiff.Internal.Configuration;
+
 using DeepDiff.PerformanceTest.Entities.Simple;
 using System;
 using System.Diagnostics;
